@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All">
+    <test name="gmail_test">
+        <classes>
+            <class name="base.BaseTest"/>
+            <class name="tests.AttachFileTest"/>
+            <class name="tests.DragNDropTest"/>
+            <class name="tests.LoginAndSpamTest"/>
+            <class name="tests.ThemeSwitchTest"/>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+</suite>
