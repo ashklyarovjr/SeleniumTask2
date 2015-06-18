@@ -50,6 +50,10 @@ public class GmailReceivedMailPage extends AbstractPage {
     @FindBy(xpath = XpathContainer.GmailMailPageInfo.SPAN_CONFIRMATION_XPATH)
     private TextBlock spanConfirmationText;
 
+    public Button getMoveToSpamButton() {
+        return moveToSpamButton;
+    }
+
     public TextBlock getSpanConfirmationText() {
         return spanConfirmationText;
     }

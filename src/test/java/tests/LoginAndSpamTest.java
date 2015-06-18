@@ -7,7 +7,7 @@ import page_object.constants_containers.SiteInfoContainer;
 
 public class LoginAndSpamTest extends BaseTest {
     @Test
-    public void testLoginAndSpam() {
+    public void testLoginAndSpam() throws InterruptedException {
         loginSteps.goToLoginPage()
                 .enterLogin(SiteInfoContainer.FIRST_USERNAME)
                 .enterPassword(SiteInfoContainer.FIRST_PASSWORD)

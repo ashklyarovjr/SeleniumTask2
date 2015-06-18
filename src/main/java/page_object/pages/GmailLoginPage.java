@@ -53,7 +53,7 @@ public class GmailLoginPage extends AbstractPage {
 
     public GmailLoginPage nextBtnClick() {
         nextBtn.click();
-        return new GmailLoginPage(driver);
+        return this;
     }
 
     public GmailLoginPage typeUsername(String username) {

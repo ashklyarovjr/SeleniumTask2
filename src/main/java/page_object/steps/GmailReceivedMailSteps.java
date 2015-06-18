@@ -50,7 +50,7 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
         receivedMailPage = receivedMailPage.selectFirstLetter();
 
-        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailMailPageInfo.TO_SPAM_BTN_XPATH);
+        CustomWaits.waitForElementClickable(driver, XpathContainer.GmailMailPageInfo.TO_SPAM_BTN_XPATH);
 
         receivedMailPage = receivedMailPage.moveToSpam();
 

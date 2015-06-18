@@ -4,6 +4,7 @@ package page_object.steps;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import page_object.base.AbstractSteps;
 import page_object.constants_containers.SiteInfoContainer;
 import page_object.constants_containers.XpathContainer;
@@ -29,14 +30,19 @@ public class GmailLoginSteps extends AbstractSteps {
     }
 
     public GmailLoginSteps(WebDriver driver, GmailLoginPage loginPage) {
+
         super(driver);
         this.loginPage = loginPage;
     }
 
     public GmailLoginSteps goToLoginPage() {
+
         loginPage = (GmailLoginPage) loginPage.goToPage();
+
         CustomWaits.waitForElementPresent(loginPage.getDriver(), XpathContainer.GmailLoginPageInfo.USERNAME_INPUT_XPATH);
+
         return this;
+
     }
 
     public GmailLoginSteps enterLogin(String login) {
@@ -44,9 +50,7 @@ public class GmailLoginSteps extends AbstractSteps {
         loginPage = loginPage.typeUsername(login)
                 .nextBtnClick();
 
-        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailLoginPageInfo.PASSWORD_INPUT_XPATH);
-
-        return new GmailLoginSteps(driver, loginPage);
+        return this;
     }
 
     public GmailAccountChoiceSteps switchToAnotherUser() {
@@ -60,7 +64,9 @@ public class GmailLoginSteps extends AbstractSteps {
         return new GmailAccountChoiceSteps(driver, accountChoicePage);
     }
 
-    public GmailReceivedMailSteps enterPassword(String password) {
+    public GmailReceivedMailSteps enterPassword(String password) throws InterruptedException {
+
+        CustomWaits.waitForVisibilityOf(driver, loginPage.getPasswordInpt());
 
         receivedMailPage = loginPage.typePassword(password)
                 .submitLogin();

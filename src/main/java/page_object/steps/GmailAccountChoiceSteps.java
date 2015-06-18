@@ -24,7 +24,7 @@ public class GmailAccountChoiceSteps extends AbstractSteps {
 
         loginPage = gmailAccountChoicePage.goToFirstUserAccount();
 
-        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailMailPageInfo.COMPOSE_BTN_XPATH);
+        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailLoginPageInfo.PASSWORD_INPUT_XPATH);
 
         return new GmailLoginSteps(driver, loginPage);
     }
@@ -35,7 +35,7 @@ public class GmailAccountChoiceSteps extends AbstractSteps {
 
         loginPage = gmailAccountChoicePage.goToSecondUserAccount();
 
-        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailMailPageInfo.COMPOSE_BTN_XPATH);
+        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailLoginPageInfo.PASSWORD_INPUT_XPATH);
 
         return new GmailLoginSteps(driver, loginPage);
     }
