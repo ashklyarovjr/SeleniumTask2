@@ -44,25 +44,19 @@ public class GmailMailForm extends HtmlElement {
 
     public void composeMailAndSend(String email, String subject, String text) throws InterruptedException {
         toField.sendKeys(email);
-        CustomWaits.delay(2000);
         subjField.sendKeys(subject);
-        CustomWaits.delay(2000);
         textField.sendKeys(text);
-        CustomWaits.delay(2000);
         sendBtn.click();
     }
 
     public void composeMailWithAttchAndSend(String email, String subject, String text, String filePath) throws InterruptedException {
         toField.sendKeys(email);
-        CustomWaits.delay(2000);
         subjField.sendKeys(subject);
-        CustomWaits.delay(2000);
         textField.sendKeys(text);
-        CustomWaits.delay(2000);
         attachFileBtn.click();
-        CustomWaits.delay(5000);
+        CustomWaits.delay(3000);
         uploadFile(filePath);
-        CustomWaits.delay(5000);
+        CustomWaits.delay(3000);
         sendBtn.click();
     }
 

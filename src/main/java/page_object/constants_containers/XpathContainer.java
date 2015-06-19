@@ -38,7 +38,7 @@ public final class XpathContainer {
         public static final String FORM_XPATH = "//div[@style]/table[@id and @class]";
         public static final String COMPOSE_FORM_TO_XPATH = "//textarea[@name='to']";
         public static final String COMPOSE_FORM_SUBJ_XPATH = "//input[@name='subjectbox']";
-        public static final String COMPOSE_FORM_TEXT_XPATH = "//div[@role='textbox']";
+        public static final String COMPOSE_FORM_TEXT_XPATH = "//div[@role='textbox' and @contenteditable]";
         public static final String COMPOSE_FORM_SENDBTN_XPATH = "//tbody//div[count(div) = 2]/div[@role='button' and @data-tooltip]";
         public static final String ATTACH_FILE_BUTTON_XPATH = "//div[@command = 'Files']";
     }
