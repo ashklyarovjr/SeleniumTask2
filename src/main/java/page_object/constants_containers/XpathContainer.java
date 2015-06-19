@@ -31,6 +31,7 @@ public final class XpathContainer {
         public static final String SPAN_CONFIRMATION_XPATH = "//div[@aria-live]//span[1]";
         public static final String STARRED_TAB_XPATH = "//a[contains(@href, 'starred')]";
         public static final String STARRED_CONFIRMATION_XPATH = "//div[@aria-live]/div/div/span[1]";
+        public static final String THEMES_BUTTON_XPATH = "(//div[@data-tooltip-delay])[4]";
     }
 
     public static final class  GmailComposeMailForm {
@@ -39,7 +40,12 @@ public final class XpathContainer {
         public static final String COMPOSE_FORM_SUBJ_XPATH = "//input[@name='subjectbox']";
         public static final String COMPOSE_FORM_TEXT_XPATH = "//div[@role='textbox']";
         public static final String COMPOSE_FORM_SENDBTN_XPATH = "//tbody//div[count(div) = 2]/div[@role='button' and @data-tooltip]";
-        public static final String ATTACH_FILE_BUTTON_XPATH = "//div[@command = 'Files']/div/div/div";
+        public static final String ATTACH_FILE_BUTTON_XPATH = "//div[@command = 'Files']";
+    }
+
+    public static final class GmailThemesInfo {
+        public static final String THEMES_LIST_XPATH = "//tbody/tr[2]/td/div[@id]/div/div/div/div";
+        public static final String THEME_CONFIRMATION_XPATH = "//div[@aria-live and role='alert']/div/div[2]";
     }
 
 }

@@ -28,7 +28,7 @@ public class GmailReceivedMailSteps extends AbstractSteps {
         this.receivedMailPage = receivedMailPage;
     }
 
-    public GmailReceivedMailSteps composeMailAndSend() {
+    public GmailReceivedMailSteps composeMailAndSend(String username, String subject) throws InterruptedException {
 
         CustomAsserts.assertThatElementIsPresentOnPage(receivedMailPage.getComposeBtn());
 
@@ -36,7 +36,22 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
         CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailComposeMailForm.COMPOSE_FORM_TO_XPATH);
 
-        receivedMailPage = receivedMailPage.fillMailAndSend(SiteInfoContainer.SECOND_USERNAME, SiteInfoContainer.FORM_SUBJ_FIRST, SiteInfoContainer.FORM_TEXT);
+        receivedMailPage = receivedMailPage.fillMailAndSend(username, subject, SiteInfoContainer.FORM_TEXT);
+
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.MAIL_SENT_CONFIRMATION_XPATH);
+
+        return this;
+    }
+
+    public GmailReceivedMailSteps composeMailWithAttachAndSend() throws InterruptedException {
+
+        CustomAsserts.assertThatElementIsPresentOnPage(receivedMailPage.getComposeBtn());
+
+        receivedMailPage = receivedMailPage.composeMail();
+
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailComposeMailForm.COMPOSE_FORM_TO_XPATH);
+
+        receivedMailPage = receivedMailPage.fillMailWithAttchAndSend(SiteInfoContainer.SECOND_USERNAME, SiteInfoContainer.FORM_SUBJ_FIRST, SiteInfoContainer.FORM_TEXT, SiteInfoContainer.FILE_PATH);
 
         CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.MAIL_SENT_CONFIRMATION_XPATH);
 
@@ -155,5 +170,25 @@ public class GmailReceivedMailSteps extends AbstractSteps {
         CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.STARRED_CONFIRMATION_XPATH);
 
         return this;
+    }
+
+    public GmailReceivedMailSteps assertThatFirstMailIsPresent() {
+
+        CustomAsserts.assertThatElementIsPresentOnPage(receivedMailPage.getFirstLetterInTheBox());
+
+        return this;
+    }
+
+    public GmailThemesSteps goToThemes() {
+
+        GmailThemesPage themesPage;
+
+        CustomAsserts.assertThatElementIsPresentOnPage(receivedMailPage.getThemesButton());
+
+        themesPage = receivedMailPage.goToThemes();
+
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailThemesInfo.THEMES_LIST_XPATH);
+
+        return new GmailThemesSteps(driver, themesPage);
     }
 }

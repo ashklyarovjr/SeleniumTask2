@@ -3,6 +3,7 @@ package page_object.pages;
 
 import org.openqa.selenium.support.FindBy;
 import page_object.constants_containers.XpathContainer;
+import page_object.helpers.CustomWaits;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
 import ru.yandex.qatools.htmlelements.element.TextInput;
@@ -41,19 +42,27 @@ public class GmailMailForm extends HtmlElement {
         return textField;
     }
 
-    public void composeMailAndSend(String email, String subject, String text) {
+    public void composeMailAndSend(String email, String subject, String text) throws InterruptedException {
         toField.sendKeys(email);
+        CustomWaits.delay(2000);
         subjField.sendKeys(subject);
+        CustomWaits.delay(2000);
         textField.sendKeys(text);
+        CustomWaits.delay(2000);
         sendBtn.click();
     }
 
-    public void composeMailWithAttchAndSend(String email, String subject, String text, String filePath) {
+    public void composeMailWithAttchAndSend(String email, String subject, String text, String filePath) throws InterruptedException {
         toField.sendKeys(email);
+        CustomWaits.delay(2000);
         subjField.sendKeys(subject);
+        CustomWaits.delay(2000);
         textField.sendKeys(text);
+        CustomWaits.delay(2000);
         attachFileBtn.click();
+        CustomWaits.delay(5000);
         uploadFile(filePath);
+        CustomWaits.delay(5000);
         sendBtn.click();
     }
 

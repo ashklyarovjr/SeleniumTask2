@@ -59,6 +59,9 @@ public class GmailReceivedMailPage extends AbstractPage {
     @FindBy(xpath = XpathContainer.GmailMailPageInfo.STARRED_CONFIRMATION_XPATH)
     private TextBlock starredConfirmationText;
 
+    @FindBy(xpath = XpathContainer.GmailMailPageInfo.THEMES_BUTTON_XPATH)
+    private Button themesButton;
+
     public Button getMoveToSpamButton() {
         return moveToSpamButton;
     }
@@ -97,6 +100,10 @@ public class GmailReceivedMailPage extends AbstractPage {
 
     public Link getStarredTab() {
         return starredTab;
+    }
+
+    public Button getThemesButton() {
+        return themesButton;
     }
 
     public GmailStarredMailPage goToStarred() {
@@ -144,14 +151,19 @@ public class GmailReceivedMailPage extends AbstractPage {
         return this;
     }
 
-    public GmailReceivedMailPage fillMailAndSend(String email, String subject, String text) {
+    public GmailReceivedMailPage fillMailAndSend(String email, String subject, String text) throws InterruptedException {
         mailForm.composeMailAndSend(email, subject, text);
         return this;
     }
 
-    public GmailReceivedMailPage fillMailWithAttchAndSend(String email, String subject, String text, String filePath) {
+    public GmailReceivedMailPage fillMailWithAttchAndSend(String email, String subject, String text, String filePath) throws InterruptedException {
         mailForm.composeMailWithAttchAndSend(email, subject, text, filePath);
         return this;
+    }
+
+    public GmailThemesPage goToThemes() {
+        themesButton.click();
+        return new GmailThemesPage(driver);
     }
 
 

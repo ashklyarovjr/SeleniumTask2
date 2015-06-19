@@ -1,10 +1,9 @@
 package base;
 
+import org.testng.annotations.*;
 import page_object.steps.GmailLoginSteps;
 import webdriver.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
 
 
 public class BaseTest {
@@ -17,16 +16,16 @@ public class BaseTest {
 
     public GmailLoginSteps loginSteps;
 
-    @BeforeSuite
+    @BeforeClass
     public void setUp() throws Exception {
         WebDriverFactory driverFactory = new WebDriverFactory();
 
-        driver = driverFactory.getDriver("firefox");
+        driver = driverFactory.getDriver("chrome");
 
         loginSteps = new GmailLoginSteps(driver);
     }
 
-    @AfterSuite
+    @AfterClass
     public void tearDown() throws Exception {
         driver.quit();
     }

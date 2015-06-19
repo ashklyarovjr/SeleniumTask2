@@ -35,7 +35,7 @@ public class GmailLoginSteps extends AbstractSteps {
 
         loginPage = (GmailLoginPage) loginPage.goToPage();
 
-        CustomWaits.waitForPresenceOfElementLocated(loginPage.getDriver(), XpathContainer.GmailLoginPageInfo.USERNAME_INPUT_XPATH);
+        CustomWaits.waitForVisibilityOfElementLocated(loginPage.getDriver(), XpathContainer.GmailLoginPageInfo.USERNAME_INPUT_XPATH);
 
         return this;
 

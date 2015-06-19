@@ -82,7 +82,7 @@
                 <version>2.18.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>C:\HybrisGitEpam\SeleniumTask2\src\test\testng_xmls\testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <properties>
                         <property>
@@ -100,5 +100,12 @@
         </plugins>
     </build>
 
-
+    <profiles>
+        <profile>
+            <id>GmailTests</id>
+            <properties>
+                <xmlFile>testng.xml</xmlFile>
+            </properties>
+        </profile>
+    </profiles>
 </project>

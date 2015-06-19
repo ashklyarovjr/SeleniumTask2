@@ -1,6 +1,7 @@
 package page_object.helpers;
 
 
+import com.google.common.base.Function;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -43,6 +44,18 @@ public class CustomWaits {
                 .pollingEvery(1, TimeUnit.SECONDS)
                 .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(elementXpath)));
+    }
+
+    public static void waitFluentForVisibilityOf(WebDriver driver, TypifiedElement element) {
+        Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+                .withTimeout(20, TimeUnit.SECONDS)
+                .pollingEvery(1, TimeUnit.SECONDS)
+                .ignoring(NoSuchElementException.class, StaleElementReferenceException.class);
+                wait.until(ExpectedConditions.visibilityOf(element.getWrappedElement()));
+    }
+
+    public static void delay(long millis) throws InterruptedException {
+        Thread.sleep(millis);
     }
 
 
