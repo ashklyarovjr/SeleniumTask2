@@ -9,6 +9,7 @@ import ru.yandex.qatools.htmlelements.element.TypifiedElement;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 
 public class CustomAsserts {
 
@@ -45,7 +46,7 @@ public class CustomAsserts {
 
     public static void assertThatElementIsPresentOnPage(TypifiedElement element) {
         try {
-            Assert.assertNotNull(element);
+            assertThat(element, notNullValue());
         } catch (AssertionError e) {
             LOGGER_ERR.error("CustomAsserts.class. Assertion error in assertThatElementIsPresentOnPage method." + e.getMessage());
             System.out.println(e.getMessage());

@@ -28,7 +28,7 @@ public class GmailSpamSteps extends AbstractSteps {
 
         gmailSpamPage = gmailSpamPage.userLogoClick();
 
-        CustomWaits.waitForElementClickable(driver, XpathContainer.GmailMailPageInfo.LOGOUT_BTN_XPATH);
+        CustomWaits.waitFluentForElementClickable(driver, XpathContainer.GmailMailPageInfo.LOGOUT_BTN_XPATH);
 
         try {
 

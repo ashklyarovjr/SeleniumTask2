@@ -1,10 +1,7 @@
 package page_object.steps;
 
 
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import page_object.base.AbstractSteps;
 import page_object.constants_containers.SiteInfoContainer;
 import page_object.constants_containers.XpathContainer;
@@ -15,7 +12,6 @@ import page_object.helpers.CustomAsserts;
 import page_object.helpers.CustomWaits;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
 
 public class GmailLoginSteps extends AbstractSteps {
     GmailLoginPage loginPage;
@@ -39,7 +35,7 @@ public class GmailLoginSteps extends AbstractSteps {
 
         loginPage = (GmailLoginPage) loginPage.goToPage();
 
-        CustomWaits.waitForElementPresent(loginPage.getDriver(), XpathContainer.GmailLoginPageInfo.USERNAME_INPUT_XPATH);
+        CustomWaits.waitForPresenceOfElementLocated(loginPage.getDriver(), XpathContainer.GmailLoginPageInfo.USERNAME_INPUT_XPATH);
 
         return this;
 
@@ -71,7 +67,7 @@ public class GmailLoginSteps extends AbstractSteps {
         receivedMailPage = loginPage.typePassword(password)
                 .submitLogin();
 
-        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailMailPageInfo.COMPOSE_BTN_XPATH);
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.COMPOSE_BTN_XPATH);
 
         return new GmailReceivedMailSteps(driver, receivedMailPage);
     }

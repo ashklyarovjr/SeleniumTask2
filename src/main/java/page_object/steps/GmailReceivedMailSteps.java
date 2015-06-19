@@ -3,15 +3,14 @@ package page_object.steps;
 
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import page_object.base.AbstractSteps;
 import page_object.constants_containers.SiteInfoContainer;
 import page_object.constants_containers.XpathContainer;
 import page_object.helpers.CustomAsserts;
 import page_object.helpers.CustomWaits;
-import page_object.pages.GmailAccountChoicePage;
-import page_object.pages.GmailLoginPage;
-import page_object.pages.GmailReceivedMailPage;
-import page_object.pages.GmailSpamPage;
+import page_object.pages.*;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -39,7 +38,7 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
         receivedMailPage = receivedMailPage.fillMailAndSend(SiteInfoContainer.SECOND_USERNAME, SiteInfoContainer.FORM_SUBJ_FIRST, SiteInfoContainer.FORM_TEXT);
 
-        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailMailPageInfo.MAIL_SENT_CONFIRMATION_XPATH);
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.MAIL_SENT_CONFIRMATION_XPATH);
 
         return this;
     }
@@ -50,11 +49,11 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
         receivedMailPage = receivedMailPage.selectFirstLetter();
 
-        CustomWaits.waitForElementClickable(driver, XpathContainer.GmailMailPageInfo.TO_SPAM_BTN_XPATH);
+        CustomWaits.waitFluentForElementClickable(driver, XpathContainer.GmailMailPageInfo.TO_SPAM_BTN_XPATH);
 
         receivedMailPage = receivedMailPage.moveToSpam();
 
-        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailMailPageInfo.SPAN_CONFIRMATION_XPATH);
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.SPAN_CONFIRMATION_XPATH);
 
         return this;
     }
@@ -71,7 +70,7 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
         spamPage = receivedMailPage.goToSpam();
 
-        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailMailPageInfo.FIRST_COMPOSED_LETTER_XPATH);
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.FIRST_COMPOSED_LETTER_XPATH);
 
         return new GmailSpamSteps(driver, spamPage);
     }
@@ -80,7 +79,7 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
         receivedMailPage = receivedMailPage.userLogoClick();
 
-        CustomWaits.waitForElementClickable(driver, XpathContainer.GmailMailPageInfo.LOGOUT_BTN_XPATH);
+        CustomWaits.waitFluentForElementClickable(driver, XpathContainer.GmailMailPageInfo.LOGOUT_BTN_XPATH);
 
         try {
 
@@ -98,7 +97,7 @@ public class GmailReceivedMailSteps extends AbstractSteps {
             }
         }
 
-        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailLoginPageInfo.USERNAME_INPUT_XPATH);
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailLoginPageInfo.USERNAME_INPUT_XPATH);
 
         return new GmailLoginSteps(driver, gmailLoginPage);
     }
@@ -107,7 +106,7 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
         receivedMailPage = receivedMailPage.userLogoClick();
 
-        CustomWaits.waitForElementClickable(driver, XpathContainer.GmailMailPageInfo.LOGOUT_BTN_XPATH);
+        CustomWaits.waitFluentForElementClickable(driver, XpathContainer.GmailMailPageInfo.LOGOUT_BTN_XPATH);
 
         try {
 
@@ -125,8 +124,36 @@ public class GmailReceivedMailSteps extends AbstractSteps {
             }
         }
 
-        CustomWaits.waitForElementPresent(driver, XpathContainer.GmailAccountChoicePageInfo.FIRST_USER_SELECT);
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailAccountChoicePageInfo.FIRST_USER_SELECT);
 
         return new GmailAccountChoiceSteps(driver, accountChoicePage);
+    }
+
+    public GmailStarredMailSteps goToStarred() {
+
+        GmailStarredMailPage starredMailPage;
+
+        CustomAsserts.assertThatElementIsPresentOnPage(receivedMailPage.getStarredTab());
+
+        starredMailPage = receivedMailPage.goToStarred();
+
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.FIRST_COMPOSED_LETTER_XPATH);
+
+        return new GmailStarredMailSteps(driver, starredMailPage);
+    }
+
+    public GmailReceivedMailSteps dragAndDrop() {
+
+        CustomAsserts.assertThatElementIsPresentOnPage(receivedMailPage.getStarredTab());
+
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.FIRST_COMPOSED_LETTER_XPATH);
+
+        Actions actions = new Actions(driver);
+
+        actions.dragAndDrop(receivedMailPage.getFirstLetterInTheBox().getWrappedElement(), receivedMailPage.getStarredTab().getWrappedElement()).build().perform();
+
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.STARRED_CONFIRMATION_XPATH);
+
+        return this;
     }
 }

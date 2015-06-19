@@ -48,18 +48,31 @@ public class GmailReceivedMailPage extends AbstractPage {
     private Link mailSentConfirmationLink;
 
     @FindBy(xpath = XpathContainer.GmailMailPageInfo.SPAN_CONFIRMATION_XPATH)
-    private TextBlock spanConfirmationText;
+    private TextBlock spamConfirmationText;
+
+    @FindBy(xpath = XpathContainer.GmailMailPageInfo.FIRST_COMPOSED_LETTER_XPATH)
+    private Link firstLetterInTheBox;
+
+    @FindBy(xpath = XpathContainer.GmailMailPageInfo.STARRED_TAB_XPATH)
+    private Link starredTab;
+
+    @FindBy(xpath = XpathContainer.GmailMailPageInfo.STARRED_CONFIRMATION_XPATH)
+    private TextBlock starredConfirmationText;
 
     public Button getMoveToSpamButton() {
         return moveToSpamButton;
     }
 
-    public TextBlock getSpanConfirmationText() {
-        return spanConfirmationText;
+    public TextBlock getSpamConfirmationText() {
+        return spamConfirmationText;
     }
 
     public Button getComposeBtn() {
         return composeBtn;
+    }
+
+    public TextBlock getStarredConfirmationText() {
+        return starredConfirmationText;
     }
 
     public Link getMailSentConfirmationLink() {
@@ -76,6 +89,19 @@ public class GmailReceivedMailPage extends AbstractPage {
 
     public GmailMailForm getMailForm() {
         return mailForm;
+    }
+
+    public Link getFirstLetterInTheBox() {
+        return firstLetterInTheBox;
+    }
+
+    public Link getStarredTab() {
+        return starredTab;
+    }
+
+    public GmailStarredMailPage goToStarred() {
+        starredTab.click();
+        return new GmailStarredMailPage(driver);
     }
 
     public GmailReceivedMailPage userLogoClick() {

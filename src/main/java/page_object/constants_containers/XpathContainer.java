@@ -18,17 +18,19 @@ public final class XpathContainer {
     }
 
     public static final class GmailMailPageInfo {
-        public static final String COMPOSE_BTN_XPATH = "//div[@role='button' and @gh and contains(@class, 'T')]";
-        public static final String FIRST_COMPOSED_LETTER_XPATH = "//tr//span[text()='" + SiteInfoContainer.FORM_SUBJ_FIRST + "']";
-        public static final String SECOND_COMPOSED_LETTER_XPATH = "//tr//span[text()='" + SiteInfoContainer.FORM_SUBJ_SECOND + "']";
+        public static final String COMPOSE_BTN_XPATH = "(//div[@id and @class]/div/div[@role='button' and @gh])[2]";
+        public static final String FIRST_COMPOSED_LETTER_XPATH = "//tr[1]//span/b[text()='" + SiteInfoContainer.FORM_SUBJ_FIRST + "']";
+        public static final String SECOND_COMPOSED_LETTER_XPATH = "//tr[1]//span/b[text()='" + SiteInfoContainer.FORM_SUBJ_SECOND + "']";
         public static final String USER_LOGO_XPATH = "//a[contains(@href, 'SignOutOptions')]";
         public static final String LOGOUT_BTN_XPATH = "//a[contains(@href, 'logout')]";
         public static final String MORE_TABS_BUTTON_XPATH = "//span[@id and @class and @role='button']/span/div";
         public static final String SPAM_TAB_XPATH = "//a[contains(@href, 'spam')]";
-        public static final String TO_SPAM_BTN_XPATH = "//div[@data-tooltip and @role='button' and @act][2]/div/div";
+        public static final String TO_SPAM_BTN_XPATH = "//div[@class and @style]/div[@act and @role='button'][2]";
         public static final String LAST_RCVD_LETTER_CHECKBOX_XPATH = "(//div[@role='checkbox'])[1]";
         public static final String MAIL_SENT_CONFIRMATION_XPATH = "//div/span[@id='link_vsm']";
         public static final String SPAN_CONFIRMATION_XPATH = "//div[@aria-live]//span[1]";
+        public static final String STARRED_TAB_XPATH = "//a[contains(@href, 'starred')]";
+        public static final String STARRED_CONFIRMATION_XPATH = "//div[@aria-live]/div/div/span[1]";
     }
 
     public static final class  GmailComposeMailForm {
