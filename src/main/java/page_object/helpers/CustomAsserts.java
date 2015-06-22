@@ -1,6 +1,7 @@
 package page_object.helpers;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
@@ -20,6 +21,7 @@ public class CustomAsserts {
     public static void assertThatStringContainsSubstring(String string, String subString) {
         try {
             assertThat(string, containsString(subString));
+            LOGGER_INFO.info("Success. assertThatStringContainsSubstring returned true. " + string + " contains " + subString);
         } catch (AssertionError e) {
             LOGGER_ERR.error("CustomAsserts.class. Assertion error in substring search method." + e.getMessage());
             System.out.println(e.getMessage());
@@ -38,6 +40,7 @@ public class CustomAsserts {
     public static void assertElementAttributeContainsString(HtmlElement element, String attribute, String string) {
         try {
             assertThat(element.getAttribute(attribute), containsString(string));
+            LOGGER_INFO.info("Success. assertElementAttributeContainsString returned true. " + element.getName() + " has attribute " + " and it contains " + string);
         } catch (Exception e) {
             LOGGER_ERR.error("CustomAsserts.class. Assertion error in assertElementAttributeContainsString method." + e.getMessage());
             System.out.println(e.getMessage());
@@ -47,6 +50,7 @@ public class CustomAsserts {
     public static void assertThatElementIsPresentOnPage(TypifiedElement element) {
         try {
             assertThat(element, notNullValue());
+            LOGGER_INFO.info("Success. assertThatElementIsPresentOnPage returned true. " + element.getName() + " found");
         } catch (AssertionError e) {
             LOGGER_ERR.error("CustomAsserts.class. Assertion error in assertThatElementIsPresentOnPage method." + e.getMessage());
             System.out.println(e.getMessage());

@@ -3,6 +3,7 @@ package page_object.pages;
 
 import org.openqa.selenium.support.FindBy;
 import page_object.constants_containers.XpathContainer;
+import page_object.helpers.CustomAsserts;
 import page_object.helpers.CustomWaits;
 import ru.yandex.qatools.htmlelements.element.Button;
 import ru.yandex.qatools.htmlelements.element.HtmlElement;
@@ -40,6 +41,14 @@ public class GmailMailForm extends HtmlElement {
 
     public TextInput getTextField() {
         return textField;
+    }
+
+    public Button getSendBtn() {
+        return sendBtn;
+    }
+
+    public Button getAttachFileBtn() {
+        return attachFileBtn;
     }
 
     public void composeMailAndSend(String email, String subject, String text) throws InterruptedException {

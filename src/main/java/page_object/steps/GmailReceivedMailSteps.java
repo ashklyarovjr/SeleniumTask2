@@ -36,6 +36,12 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
         CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailComposeMailForm.COMPOSE_FORM_TO_XPATH);
 
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailComposeMailForm.ATTACH_FILE_BUTTON_XPATH);
+
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailComposeMailForm.COMPOSE_FORM_SENDBTN_XPATH);
+
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailComposeMailForm.COMPOSE_FORM_TEXT_XPATH);
+
         receivedMailPage = receivedMailPage.fillMailAndSend(username, subject, SiteInfoContainer.FORM_TEXT);
 
         CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.MAIL_SENT_CONFIRMATION_XPATH);
@@ -50,6 +56,12 @@ public class GmailReceivedMailSteps extends AbstractSteps {
         receivedMailPage = receivedMailPage.composeMail();
 
         CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailComposeMailForm.COMPOSE_FORM_TO_XPATH);
+
+        CustomWaits.waitForVisibilityOf(driver, receivedMailPage.getMailForm().getAttachFileBtn());
+
+        CustomWaits.waitForVisibilityOf(driver, receivedMailPage.getMailForm().getSendBtn());
+
+        CustomWaits.waitForVisibilityOf(driver, receivedMailPage.getMailForm().getTextField());
 
         receivedMailPage = receivedMailPage.fillMailWithAttchAndSend(SiteInfoContainer.SECOND_USERNAME, SiteInfoContainer.FORM_SUBJ_FIRST, SiteInfoContainer.FORM_TEXT, SiteInfoContainer.FILE_PATH);
 
@@ -100,6 +112,8 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
             gmailLoginPage = receivedMailPage.logoutBtnClick();
 
+            CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailLoginPageInfo.USERNAME_INPUT_XPATH);
+
         } catch (UnhandledAlertException e) {
             try {
 
@@ -111,8 +125,6 @@ public class GmailReceivedMailSteps extends AbstractSteps {
                 e1.printStackTrace();
             }
         }
-
-        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailLoginPageInfo.USERNAME_INPUT_XPATH);
 
         return new GmailLoginSteps(driver, gmailLoginPage);
     }
@@ -127,6 +139,8 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
             accountChoicePage = receivedMailPage.logoutBtnClickFinal();
 
+            CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailAccountChoicePageInfo.FIRST_USER_SELECT);
+
         } catch (UnhandledAlertException e) {
             try {
 
@@ -138,8 +152,6 @@ public class GmailReceivedMailSteps extends AbstractSteps {
                 e1.printStackTrace();
             }
         }
-
-        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailAccountChoicePageInfo.FIRST_USER_SELECT);
 
         return new GmailAccountChoiceSteps(driver, accountChoicePage);
     }

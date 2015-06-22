@@ -25,7 +25,7 @@ public final class XpathContainer {
         public static final String LOGOUT_BTN_XPATH = "//a[contains(@href, 'logout')]";
         public static final String MORE_TABS_BUTTON_XPATH = "//span[@id and @class and @role='button']/span/div";
         public static final String SPAM_TAB_XPATH = "//a[contains(@href, 'spam')]";
-        public static final String TO_SPAM_BTN_XPATH = "//div[@class and @style]/div[@act and @role='button'][2]";
+        public static final String TO_SPAM_BTN_XPATH = "//div[@class]/div[@act and @role='button'][2]";
         public static final String LAST_RCVD_LETTER_CHECKBOX_XPATH = "(//div[@role='checkbox'])[1]";
         public static final String MAIL_SENT_CONFIRMATION_XPATH = "//div/span[@id='link_vsm']";
         public static final String SPAN_CONFIRMATION_XPATH = "//div[@aria-live]//span[1]";
@@ -35,7 +35,7 @@ public final class XpathContainer {
     }
 
     public static final class  GmailComposeMailForm {
-        public static final String FORM_XPATH = "//div[@style]/table[@id and @class]";
+        public static final String FORM_XPATH = "//div[@class and @id]/table[@id and @class]";
         public static final String COMPOSE_FORM_TO_XPATH = "//textarea[@name='to']";
         public static final String COMPOSE_FORM_SUBJ_XPATH = "//input[@name='subjectbox']";
         public static final String COMPOSE_FORM_TEXT_XPATH = "//div[@role='textbox' and @contenteditable]";
