@@ -75,32 +75,12 @@ public class GmailReceivedMailPage extends AbstractPage {
         return selectAll;
     }
 
-    public Button getDeleteReceivedLetters() {
-        return deleteReceivedLetters;
-    }
-
     public Link getAttachmentIcon() {
         return attachmentIcon;
     }
 
-    public Button getMoveToSpamButton() {
-        return moveToSpamButton;
-    }
-
-    public TextBlock getSpamConfirmationText() {
-        return spamConfirmationText;
-    }
-
     public Button getComposeBtn() {
         return composeBtn;
-    }
-
-    public TextBlock getStarredConfirmationText() {
-        return starredConfirmationText;
-    }
-
-    public Link getMailSentConfirmationLink() {
-        return mailSentConfirmationLink;
     }
 
     public CheckBox getLastReceivedLetterCheckBox() {

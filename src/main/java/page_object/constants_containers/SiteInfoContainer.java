@@ -5,7 +5,6 @@ public final class SiteInfoContainer {
 
     public static final String URL = "https://accounts.google.com/ServiceLogin?sacu=1&scc=1&continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&hl";
 
-    public static final String LOGIN_PAGE_TITLE_FIRST = "Google";
     public static final String LOGIN_PAGE_TITLE_SECOND = "Gmail";
 
     public static final String FIRST_USERNAME = "ttesting124@gmail.com";

@@ -17,10 +17,6 @@ public abstract class AbstractPage {
         title = driver.getTitle();
     }
 
-    public AbstractPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
     public WebDriver getDriver() {
         return driver;
     }

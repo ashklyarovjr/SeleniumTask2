@@ -35,20 +35,8 @@ public class GmailLoginPage extends AbstractPage {
     @FindBy(xpath = XpathContainer.GmailLoginPageInfo.ENTER_ANOTHER_ACCOUNT_LINK_XPATH)
     private Link enterOtherAccountLink;
 
-    public TextInput getUsernameInpt() {
-        return usernameInpt;
-    }
-
     public TextInput getPasswordInpt() {
         return passwordInpt;
-    }
-
-    public Button getSubmitBtn() {
-        return submitBtn;
-    }
-
-    public Button getNextBtn() {
-        return nextBtn;
     }
 
     public GmailLoginPage nextBtnClick() {

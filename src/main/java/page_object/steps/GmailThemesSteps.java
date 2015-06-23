@@ -21,8 +21,6 @@ public class GmailThemesSteps extends AbstractSteps {
 
     GmailThemesPage themesPage;
 
-    GmailAccountChoicePage accountChoicePage;
-
     public GmailThemesSteps(WebDriver driver, GmailThemesPage themesPage) {
         super(driver);
         this.themesPage = themesPage;

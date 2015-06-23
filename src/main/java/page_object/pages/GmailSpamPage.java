@@ -43,16 +43,8 @@ public class GmailSpamPage extends AbstractPage {
         return firstComposedSpam;
     }
 
-    public Link getSecondComposedSpam() {
-        return secondComposedSpam;
-    }
-
     public CheckBox getSelectAll() {
         return selectAll;
-    }
-
-    public Button getDeleteSpam() {
-        return deleteSpam;
     }
 
     public GmailSpamPage userLogoClick() {

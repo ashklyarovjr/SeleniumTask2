@@ -54,11 +54,6 @@ public class GmailSpamSteps extends AbstractSteps {
         return this;
     }
 
-    public GmailSpamSteps assertThatSecondMailIsPresent() {
-        CustomAsserts.assertThatElementIsPresentOnPage(gmailSpamPage.getSecondComposedSpam());
-        return this;
-    }
-
     public GmailSpamSteps deleteSpam() {
 
         CustomAsserts.assertThatElementIsPresentOnPage(gmailSpamPage.getSelectAll());
