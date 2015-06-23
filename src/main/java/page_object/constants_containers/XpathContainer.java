@@ -32,6 +32,12 @@ public final class XpathContainer {
         public static final String STARRED_TAB_XPATH = "//a[contains(@href, 'starred')]";
         public static final String STARRED_CONFIRMATION_XPATH = "//div[@aria-live]/div/div/span[1]";
         public static final String THEMES_BUTTON_XPATH = "(//div[@data-tooltip-delay])[4]";
+        public static final String FIRST_LETTER_ATTACHMENT_ICON_XPATH = "//tbody/tr[@class and @id][1]//img[@class and @alt and @title and @src]";
+        public static final String SELECT_ALL_IN_RCVD_TAB = "(//div[@tabindex='0' and @role='button']/div/span)[1]";
+        public static final String SELECT_ALL_IN_SPAM_TAB = "//div[@gh]//div[@tabindex='0' and @role='button']/div/span";
+        public static final String DELETE_ALL_RCVD_BTN_XPATH = "//div[@class]/div[@act and @role='button'][3]";
+        public static final String DELETE_ALL_SPAM_BTN_XPATH = "//div[@act='17']";
+
     }
 
     public static final class  GmailComposeMailForm {

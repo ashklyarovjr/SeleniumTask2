@@ -18,6 +18,8 @@ public class AttachFileTest extends BaseTest{
                 .enterLogin(SiteInfoContainer.SECOND_USERNAME)
                 .enterPassword(SiteInfoContainer.SECOND_PASSWORD)
                 .assertThatFirstMailIsPresent()
+                .assertThatFirstMailContainsAttachment()
+                .deleteReceivedMail()
                 .logOutFinal();
     }
 }

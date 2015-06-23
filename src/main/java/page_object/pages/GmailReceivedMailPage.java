@@ -62,6 +62,27 @@ public class GmailReceivedMailPage extends AbstractPage {
     @FindBy(xpath = XpathContainer.GmailMailPageInfo.THEMES_BUTTON_XPATH)
     private Button themesButton;
 
+    @FindBy(xpath = XpathContainer.GmailMailPageInfo.FIRST_LETTER_ATTACHMENT_ICON_XPATH)
+    private Link attachmentIcon;
+
+    @FindBy(xpath = XpathContainer.GmailMailPageInfo.SELECT_ALL_IN_RCVD_TAB)
+    private CheckBox selectAll;
+
+    @FindBy(xpath = XpathContainer.GmailMailPageInfo.DELETE_ALL_RCVD_BTN_XPATH)
+    private Button deleteReceivedLetters;
+
+    public CheckBox getSelectAll() {
+        return selectAll;
+    }
+
+    public Button getDeleteReceivedLetters() {
+        return deleteReceivedLetters;
+    }
+
+    public Link getAttachmentIcon() {
+        return attachmentIcon;
+    }
+
     public Button getMoveToSpamButton() {
         return moveToSpamButton;
     }
@@ -164,6 +185,16 @@ public class GmailReceivedMailPage extends AbstractPage {
     public GmailThemesPage goToThemes() {
         themesButton.click();
         return new GmailThemesPage(driver);
+    }
+
+    public GmailReceivedMailPage selectAllLetters() {
+        selectAll.select();
+        return this;
+    }
+
+    public GmailReceivedMailPage deleteSelectedLetters() {
+        deleteReceivedLetters.click();
+        return this;
     }
 
 

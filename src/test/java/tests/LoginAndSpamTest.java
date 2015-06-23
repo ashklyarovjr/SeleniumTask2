@@ -25,8 +25,10 @@ public class LoginAndSpamTest extends BaseTest {
                 .logOutFinal()
                 .goToSecondUserAccout()
                 .enterPassword(SiteInfoContainer.SECOND_PASSWORD)
+                .deleteReceivedMail()
                 .goToSpam()
                 .assertThatFirstMailIsPresent()
+                .deleteSpam()
                 .logOut();
     }
 }

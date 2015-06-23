@@ -58,4 +58,17 @@ public class GmailSpamSteps extends AbstractSteps {
         CustomAsserts.assertThatElementIsPresentOnPage(gmailSpamPage.getSecondComposedSpam());
         return this;
     }
+
+    public GmailSpamSteps deleteSpam() {
+
+        CustomAsserts.assertThatElementIsPresentOnPage(gmailSpamPage.getSelectAll());
+
+        gmailSpamPage = gmailSpamPage.selectAllLetters();
+
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.DELETE_ALL_SPAM_BTN_XPATH);
+
+        gmailSpamPage = gmailSpamPage.deleteSelectedLetters();
+
+        return this;
+    }
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import page_object.base.AbstractPage;
 import page_object.constants_containers.XpathContainer;
 import ru.yandex.qatools.htmlelements.element.Button;
+import ru.yandex.qatools.htmlelements.element.CheckBox;
 import ru.yandex.qatools.htmlelements.element.Link;
 import ru.yandex.qatools.htmlelements.loader.decorator.HtmlElementDecorator;
 
@@ -32,12 +33,26 @@ public class GmailSpamPage extends AbstractPage {
     @FindBy(xpath = XpathContainer.GmailMailPageInfo.SECOND_COMPOSED_LETTER_XPATH)
     private Link secondComposedSpam;
 
+    @FindBy(xpath = XpathContainer.GmailMailPageInfo.SELECT_ALL_IN_SPAM_TAB)
+    private CheckBox selectAll;
+
+    @FindBy(xpath = XpathContainer.GmailMailPageInfo.DELETE_ALL_SPAM_BTN_XPATH)
+    private Button deleteSpam;
+
     public Link getFirstComposedSpam() {
         return firstComposedSpam;
     }
 
     public Link getSecondComposedSpam() {
         return secondComposedSpam;
+    }
+
+    public CheckBox getSelectAll() {
+        return selectAll;
+    }
+
+    public Button getDeleteSpam() {
+        return deleteSpam;
     }
 
     public GmailSpamPage userLogoClick() {
@@ -48,5 +63,15 @@ public class GmailSpamPage extends AbstractPage {
     public GmailLoginPage logoutBtnClick() {
         logOutBtn.click();
         return new GmailLoginPage(driver);
+    }
+
+    public GmailSpamPage selectAllLetters() {
+        selectAll.select();
+        return this;
+    }
+
+    public GmailSpamPage deleteSelectedLetters() {
+        deleteSpam.click();
+        return this;
     }
 }

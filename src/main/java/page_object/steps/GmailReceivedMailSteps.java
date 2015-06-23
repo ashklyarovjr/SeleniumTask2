@@ -40,8 +40,6 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
         CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailComposeMailForm.COMPOSE_FORM_SENDBTN_XPATH);
 
-        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailComposeMailForm.COMPOSE_FORM_TEXT_XPATH);
-
         receivedMailPage = receivedMailPage.fillMailAndSend(username, subject, SiteInfoContainer.FORM_TEXT);
 
         CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.MAIL_SENT_CONFIRMATION_XPATH);
@@ -93,7 +91,7 @@ public class GmailReceivedMailSteps extends AbstractSteps {
 
         receivedMailPage = receivedMailPage.moreTabs();
 
-        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.SPAM_TAB_XPATH);
+        CustomWaits.waitForVisibilityOfElementLocated(driver, XpathContainer.GmailMailPageInfo.SPAM_TAB_XPATH);
 
         spamPage = receivedMailPage.goToSpam();
 
@@ -147,6 +145,8 @@ public class GmailReceivedMailSteps extends AbstractSteps {
                 Robot robot = new Robot();
                 robot.keyPress(KeyEvent.VK_ENTER);
                 robot.keyRelease(KeyEvent.VK_ENTER);
+                robot.keyPress(KeyEvent.VK_ENTER);
+                robot.keyRelease(KeyEvent.VK_ENTER);
 
             } catch (AWTException e1) {
                 e1.printStackTrace();
@@ -191,6 +191,13 @@ public class GmailReceivedMailSteps extends AbstractSteps {
         return this;
     }
 
+    public GmailReceivedMailSteps assertThatFirstMailContainsAttachment() {
+
+        CustomAsserts.assertThatElementIsPresentOnPage(receivedMailPage.getAttachmentIcon());
+
+        return this;
+    }
+
     public GmailThemesSteps goToThemes() {
 
         GmailThemesPage themesPage;
@@ -202,5 +209,18 @@ public class GmailReceivedMailSteps extends AbstractSteps {
         CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailThemesInfo.THEMES_LIST_XPATH);
 
         return new GmailThemesSteps(driver, themesPage);
+    }
+
+    public GmailReceivedMailSteps deleteReceivedMail() {
+
+        CustomAsserts.assertThatElementIsPresentOnPage(receivedMailPage.getSelectAll());
+
+        receivedMailPage = receivedMailPage.selectAllLetters();
+
+        CustomWaits.waitForPresenceOfElementLocated(driver, XpathContainer.GmailMailPageInfo.DELETE_ALL_RCVD_BTN_XPATH);
+
+        receivedMailPage = receivedMailPage.deleteSelectedLetters();
+
+        return this;
     }
 }
